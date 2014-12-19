@@ -28,6 +28,7 @@ server.listen(5433, function() {
 	console.log('Listening for subscribers...');
 });
 
-// to see in action, open 2nd git bash, and type 'telnet localhost 5433'
+// to see in action, open 2nd git bash (or command window if telnet not found even after installing), and type 'telnet localhost 5433'
 // note: may have to install telnet in 'Turn Windows features on or off'
 // then use 3rd git bash to run 'touch target.txt', or just edit target.txt
+// to kill telnet session - Ctrl + ], then type 'quit' in new window
