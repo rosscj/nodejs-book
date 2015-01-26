@@ -20,8 +20,9 @@ const
 				done(); // callback worker function calls to signal work queue that it is free (part of async)
 			});
 		});
-	}, 1000); // 1000 is concurrency limit, book expected this to be to much for conncurrent dataabase connections and suggested changing
+	}, 10); // 1000 is concurrency limit, book expected this to be to much for conncurrent dataabase connections and suggested changing
 			  // it to 10, but it did not error for me
+			  // did error, but not until > 25000 in, trying with 10
 	
 console.log('beginning directory walk');
 
