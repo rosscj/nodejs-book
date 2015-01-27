@@ -1,7 +1,7 @@
 module.exports = {
 	by_author: {
 		map: function(doc) {
-			if ('authors' in doc {
+			if ('authors' in doc) {
 				doc.authors.forEach(emit);
 			}
 		}.toString(), // have to do toString to store in CouchDB, it only accepts json docs, not true functions
