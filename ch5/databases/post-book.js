@@ -2,15 +2,15 @@
 const
 	request = require('request'),
 	doc = {
-		"_id": "3",
-		"title": "chris test book",
+		"_id": "4",
+		"title": "one author, three subjects",
 		"authors": [
-			"Chris Ross",
-			"Joe Jones"
+			"Sam Ross"
 		],
 		"subjects": [
-			"Node js",
-			"Javascript"
+			"Emily",
+			"Dylan",
+			"boo guys"
 		]		
 	};
 	
