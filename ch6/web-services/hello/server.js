@@ -2,9 +2,10 @@
 'use strict';
 const
 	express = require('express'),
+	logger = require('morgan'),
 	app = express();
 
-app.use(express.logger('dev'));
+// app.use(logger);
 app.get('/api/:name', function(req, res) {
 	res.json(200, { "hello": req.params.name });
 });
