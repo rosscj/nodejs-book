@@ -1,19 +1,11 @@
-function* recursiveGenerator(node) {
-    if (node.type === 'root') {
-        for (var i = 0; i < node.value.length; ++i) {
-            var subnode = node.value[i];
-
-            for (var suffix of recursiveGenerator(subnode)) {
-                yield suffix;
-            }
-        }
-    }
-
-    else {
-        yield node.value;
-    }
+function* idMaker(){
+    var index = 0;
+    while(true)
+        yield index++;
 }
 
-for (generated of recursiveGenerator(nodes)) {
-    console.log(generated);
-}
+var gen = idMaker();
+
+console.log(gen.next().value); // 0
+console.log(gen.next().value); // 1
+console.log(gen.next().value); // 2
