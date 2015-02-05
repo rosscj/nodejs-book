@@ -93,14 +93,14 @@ module.exports = function(config, app) {
   app.put('/api/bundle/:id/book/:pgid', function(req, res) {
     
     let
-      get1 = Q.denodeify(request.get), 
+      get = Q.denodeify(request.get), 
       put = Q.denodeify(request.put);
     
     Q.async(function* (){  
       let args, couchRes, bundle, book;
       
       // grab the bundle from the b4 database
-      args = Fiber.yield get1(config.b4db + req.params.id);  
+      args = Fiber.yield get(config.b4db + req.params.id);  
       couchRes = args[0];
       bundle = JSON.parse(args[1]);
       
@@ -111,7 +111,7 @@ module.exports = function(config, app) {
       }
       
       // look up the book by its Project Gutenberg ID
-      args = Fiber.yield get1(config.bookdb + req.params.pgid);  
+      args = Fiber.yield get(config.bookdb + req.params.pgid);  
       couchRes = args[0];
       book = JSON.parse(args[1]);
       
