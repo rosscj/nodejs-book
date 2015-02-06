@@ -100,7 +100,7 @@ module.exports = function(config, app) {
       let args, couchRes, bundle, book;
       
       // grab the bundle from the b4 database
-      args = Fiber.yield get(config.b4db + req.params.id);  
+      args = yield get(config.b4db + req.params.id);  
       couchRes = args[0];
       bundle = JSON.parse(args[1]);
       
@@ -111,7 +111,7 @@ module.exports = function(config, app) {
       }
       
       // look up the book by its Project Gutenberg ID
-      args = Fiber.yield get(config.bookdb + req.params.pgid);  
+      args = yield get(config.bookdb + req.params.pgid);  
       couchRes = args[0];
       book = JSON.parse(args[1]);
       
@@ -123,7 +123,7 @@ module.exports = function(config, app) {
       
       // add the book to the bundle and put it back in CouchDB
       bundle.books[book._id] = book.title;  
-      args = Fiber.yield put({url: config.b4db + bundle._id, json: bundle});
+      args = yield put({url: config.b4db + bundle._id, json: bundle});
       res.json(args[0].statusCode, args[1]);
       
     })()  
@@ -140,7 +140,7 @@ module.exports = function(config, app) {
     Q.async(function* (){
       
       let
-        args = Fiber.yield Q.nfcall(request, config.b4db + req.params.id),
+        args = yield Q.nfcall(request, config.b4db + req.params.id),
         couchRes = args[0],
         bundle = JSON.parse(args[1]);
       
