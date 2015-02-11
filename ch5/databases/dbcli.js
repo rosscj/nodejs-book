@@ -11,6 +11,7 @@ const
 // console.log('argv stringified = '+ JSON.stringify(process.argv[3]));
 request(options, function(err, res, body) {
 	if (err) {
+		console.log('res = ' + res);
 		throw Error(err);
 	} else {
 		console.log(res.statusCode, JSON.parse(body));

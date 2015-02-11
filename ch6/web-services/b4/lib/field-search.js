@@ -14,7 +14,8 @@
 'use strict';
 const request = require('request');
 module.exports = function(config, app) {  
-  app.get('/api/search/:view', function(req, res) {  
+  app.get('/api/search/:view', function(req, res) {
+	console.log('going to make request to ' + config.bookdb + '_design/books/_view/by_' + req.params.view);
     request({  
       method: 'GET',
       url: config.bookdb + '_design/books/_view/by_' + req.params.view,  
@@ -30,7 +31,19 @@ module.exports = function(config, app) {
         res.json(502, { error: "bad_gateway", reason: err.code });
         return;
       }
-      
+	  console.log('couchRes = '+ couchRes);
+	  console.log('couchRes = '+ couchRes.toJSON().request);
+	  
+	  // console.log('couchRes.message = '+ couchRes.message);
+	  for (var property in couchRes) {
+		if (couchRes.hasOwnProperty(property)) {
+			//console.log('couchRes[property] for property = ' +property  + ' is ' + couchRes[property]);
+		}
+	  }
+	  
+      console.log('couchRes.statusCode = '+ couchRes.statusCode);
+	  console.log('body = ' + body);
+	  console.log('err = ' + err);
       // CouchDB couldn't process our request
       if (couchRes.statusCode !== 200) {
         res.json(couchRes.statusCode, JSON.parse(body));
