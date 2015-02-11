@@ -5,7 +5,7 @@ const
   logger = require('morgan'),
   app = express();
 
-app.use(logger);
+//app.use(logger);
 
 const config = {
   bookdb: 'http://localhost:5984/books/',
