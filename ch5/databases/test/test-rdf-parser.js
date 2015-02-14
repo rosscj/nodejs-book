@@ -13,7 +13,7 @@ exports.testRDFParser = function(test) {
 		
 		// deepEqual is not working, seems related to why book.authors console.log won't work...
 		// so do this more painful and fragile asserting...
-		// --> needed to do .toArray() call on authors and subjects collections in rdf-parser.js to make this work
+		// --> needed to do .toArray() call on authors and subjects collections in rdf-parser.js to make this work https://pragprog.com/titles/jwnode/errata
 		test.deepEqual(book, expectedValue, "book should match expected");
 		// console.log('book.authors = ' + book.authors);
 		// var array = ['test1', 'test3'];

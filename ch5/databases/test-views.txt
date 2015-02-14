@@ -26,3 +26,13 @@ testing why view query returns no results
 	--> other views (by_author, by_subject) look ok if data is structured correctly (ids 3-6 that I added manually)
 		-- by_subject might be off, seemed doubled? 
 		-- good enough to move on though
+		
+-- 2/14/15
+	-- fixed rdf-parsing to make subjects and authers correct arrays (they were 'cheerio arrays' before)
+	-- so need to remake books database
+		-- run:
+			node --harmony dbcli.js DELETE books
+			node --harmony dblci.js PUT books
+			node --harmony import-books.js
+				-- will take a while, can check progress in different bash window with:
+				node --harmony dbcli.js GET books -- doc_count property will be increasing
