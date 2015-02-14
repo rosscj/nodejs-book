@@ -136,7 +136,7 @@ module.exports = function(config, app) {
    * remove a book from a bundle
    * curl -X DELETE http://localhost:3000/api/bundle/<id>/book/<pgid>
    */
-  app.del('/api/bundle/:id/book/:pgid', function(req, res) {
+  app.delete('/api/bundle/:id/book/:pgid', function(req, res) {
     Q.async(function* (){
       
       let

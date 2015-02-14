@@ -18,7 +18,7 @@ testing why view query returns no results
 	-- can see views in browser - http://127.0.0.1:5984/books/_design/books/_view/all_authors?key=%221%22
 		-- this has key="1" encoded
 		-- encoding values on command line works...
-			-- running this on command line dbcli works - node --harmony GET books/_design/books/_view/all_authors?key=%221%22
+			-- running this on command line dbcli works - node --harmony dbcli.js GET books/_design/books/_view/all_authors?key=%221%22
 	--> problem is windows strips double quotes off of command line 					
 			http://stackoverflow.com/questions/12310468/node-js-child-process-issue-with-args-quotes-issue-ffmpeg-issue
 	
