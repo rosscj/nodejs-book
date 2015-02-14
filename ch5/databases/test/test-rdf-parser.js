@@ -5,7 +5,7 @@ const
 	
 exports.testRDFParser = function(test) {
 	rdfParser(__dirname + '/pg132.rdf', function(err, book) {
-		test.expect(10); // count of how many asserts there will be
+		test.expect(11); // count of how many asserts there will be
 		test.ifError(err);
 
 		// // this will never show anything as book.authors .... why?? other things work, like typeof(book.authors), book.authors.length
@@ -13,7 +13,11 @@ exports.testRDFParser = function(test) {
 		
 		// deepEqual is not working, seems related to why book.authors console.log won't work...
 		// so do this more painful and fragile asserting...
-		// test.deepEqual(book, expectedValue, "book should match expected");
+		// --> needed to do .toArray() call on authors and subjects collections in rdf-parser.js to make this work
+		test.deepEqual(book, expectedValue, "book should match expected");
+		// console.log('book.authors = ' + book.authors);
+		// var array = ['test1', 'test3'];
+		// console.log('test array = ' + array);
 		
 		test.equal(book._id, expectedValue._id);
 		test.equal(book.title, expectedValue.title);

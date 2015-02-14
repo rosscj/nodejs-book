@@ -22,9 +22,9 @@ module.exports = function(filename, callback) {
 		callback(null, {
 			_id: $('pgterms\\:ebook').attr('rdf:about').replace('ebooks/', ''),
 			title: $('dcterms\\:title').text(),
-			authors: $('pgterms\\:agent pgterms\\:name').map(collect),
+			authors: $('pgterms\\:agent pgterms\\:name').map(collect).toArray(),
 			//subjects: $('[rdf\\:resource$="/LCSH"] ~ rdf\\:value').map(collect) // original, but siblings and/or ends with not working...
-			subjects: $('dcterms\\:subject rdf\\:description rdf\\:value').map(collect)
+			subjects: $('dcterms\\:subject rdf\\:description rdf\\:value').map(collect).toArray()
 		});		
 	});
 };
