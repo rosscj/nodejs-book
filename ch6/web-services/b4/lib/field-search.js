@@ -53,6 +53,7 @@ module.exports = function(config, app) {
       // send back just the keys we got back from CouchDB
       res.json(JSON.parse(body).rows.map(function(elem){
         return elem.key;
+		// returning just elem will return list of key value pairs where value is count of key values found
       }));
       
     });

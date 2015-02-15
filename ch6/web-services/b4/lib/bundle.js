@@ -38,8 +38,11 @@ module.exports = function(config, app) {
     deferred.promise.then(function(args) {  
       let couchRes = args[0], body = args[1];
       res.json(couchRes.statusCode, body);
-    }, function(err) {  
+	  // res.status(couchRes.statusCode).json(body);
+    }, function(err) {
+	  console.log('hit err block, err = '+ err);
       res.json(502, { error: "bad_gateway", reason: err.code });
+	  // res.status(502).json({ error: "bad_gateway", reason: err.code });
     });
   });
   
