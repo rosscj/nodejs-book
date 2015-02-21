@@ -1,0 +1,14 @@
+Install redis on windows - http://stackoverflow.com/questions/6476945/how-do-i-run-redis-on-windows
+
+Git bash here
+Run 'npm install' (don't have all node modules installed)
+Run 'npm start' 
+Git bash here (2nd window)
+Run 'curl -i -X http:/localhost:3000/api/test'
+-- See cookie set
+
+-- to see data in redis
+	-- added "C:\Program Files\Redis" to path... maybe need to restart to get that reflected
+	
+Git bash here (3rd window)
+"C:\\Program Files\\Redis\\redis-cli.exe" Keys 'sess:*'
