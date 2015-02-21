@@ -28,7 +28,7 @@ testing why view query returns no results
 		-- good enough to move on though
 		
 -- 2/14/15
-	-- fixed rdf-parsing to make subjects and authers correct arrays (they were 'cheerio arrays' before)
+	-- fixed rdf-parsing to make subjects and authors correct arrays (they were 'cheerio arrays' before)
 	-- so need to remake books database
 		-- run:
 			node --harmony dbcli.js DELETE books
@@ -36,3 +36,8 @@ testing why view query returns no results
 			node --harmony import-books.js
 				-- will take a while, can check progress in different bash window with:
 				node --harmony dbcli.js GET books -- doc_count property will be increasing
+			node --harmony make-views.js
+			
+			-- then can run to test views:
+				node --harmony dbcli.js GET books/_design/books/_view/by_author?group=true
+				
