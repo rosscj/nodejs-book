@@ -5,16 +5,13 @@ const
 	logger = require('morgan'),
 	cookieParser = require('cookie-parser'),
 	redisClient = require('redis').createClient(),
-	// RedisStore = require('connect-redis')(express),
 	session = require('express-session'),
 	RedisStore = require('connect-redis')(session),
 	app = express();
 
 // app.use(logger);
-// app.use(express.cookieParser());
 app.use(cookieParser());
 app.use(session({
-// app.use(express.session({
 	secret: 'unguessable',
 	store: new RedisStore({
 		client: redisClient
